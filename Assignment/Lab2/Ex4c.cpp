@@ -1,17 +1,21 @@
 #include <iostream>
 using namespace std;
 
-double const_e = 1;
+double answer = 1,x,cur_x;
 int accuracy,cur_val = 1,counter = 1;
 
 int main(){
     cout << "Please input the accuracy of e: ";
     cin >> accuracy;
+    cout << "Please input x:";
+    cin >> x;
+    cur_x = x;
     while(counter <= accuracy) {
         cur_val *= counter;
-        const_e += (1 / (double)cur_val);
+        answer += (cur_x / cur_val);
         counter ++;
+        cur_x *= x;
     }
-    cout << const_e;
+    cout << answer;
     return 0;
 }
