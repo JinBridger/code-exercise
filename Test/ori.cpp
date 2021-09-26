@@ -84,7 +84,8 @@ void debugger() {
     }
 }
 int main() {
-    freopen("D:\\Code_exercise\\POJ\\Data\\poj2482.in", "r", stdin);
+    freopen("D:\\Code_exercise\\Test\\Data\\data.in", "r", stdin);
+    freopen("D:\\Code_exercise\\Test\\Data\\data.out", "w", stdout);
     while (scanf("%d%d%d", &n, &W, &H) != EOF) {
         ans = 0;
         memset(Y, 0, sizeof(Y));
@@ -124,8 +125,8 @@ int main() {
     return 0;
 }
 /*
-3 3 8
-5 8 3
-9 2 9
-2 9 7
+3 5 4
+1 2 3
+2 3 2
+6 3 1
 */
