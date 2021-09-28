@@ -2,18 +2,19 @@
 using namespace std;
 
 int main(){
-    int count = 0;
-    cout << "Side1\tSide2\tSide3" << endl;
-    for(int side1 = 1; side1 <= 500; side1 ++) {
-        for(int side2 = side1; side2 <= 500; side2 ++) {
-            for(int side3 = side2; side3 <= 500; side3 ++) {
-                if(side1 * side1 + side2 * side2 == side3 * side3) {
-                    cout << side3 << "\t" << side2 << "\t" << side3 << endl;
-                    count ++;
-                }
-            }
-        }
+    int number,digits[6],counter;
+    cin >> number;
+    counter = 1;
+    while(number) {
+        digits[counter] = number % 10;
+        number /= 10;
+        counter++;
     }
-    cout << "A total of " << count << " triples were found." << endl;
+    counter = 1;
+    if((digits[1] == digits[5]) && (digits[2] == digits[4])) {
+        cout << "the five-digit intergers is a palindrome!";
+    } else {
+        cout << "It is not a palindrome!";
+    }
     return 0;
 }

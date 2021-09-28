@@ -1,14 +1,14 @@
 #include <iostream>
 using namespace std;
 
-int number,answer = 1;
-
 int main(){
+    int number,answer = 1;
+    cout << "Please input the number: ";
     cin >> number;
     while(number) {
         answer *= number;
         number --;
     }
-    cout << answer;
+    cout << "n! is : " << answer;
     return 0;
 }

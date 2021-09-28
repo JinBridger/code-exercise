@@ -10,6 +10,7 @@ int main(){
         system("D:\\Code_exercise\\Test\\Bin\\ori.exe");
         if(system("fc D:\\Code_exercise\\Test\\Data\\data.out D:\\Code_exercise\\Test\\Data\\data.ans")) {
             puts("Wrong Answer");
+            system("pause");
             return 0;
         } else {
             printf("Accepted, Test Case #%d, Time: %.0lfms\n", T, ed-st);

@@ -33,7 +33,7 @@ int cmp(line a, line b) {
     if(a.x == b.x) {
         return a.val > b.val;
     } else {
-        return a.x > b.x;
+        return a.x < b.x;
     }
 }
 void build(int p, int l, int r) {
@@ -71,8 +71,7 @@ void change(int p, int l, int r, int v) {
     return ;
 }
 int main() {
-    freopen("D:\\Code_exercise\\Test\\Data\\data.in", "r", stdin);
-    freopen("D:\\Code_exercise\\Test\\Data\\data.out", "w", stdout);
+    // freopen("D:\\Code_exercise\\POJ\\Data\\poj1177.in", "r", stdin);
     scanf("%d", &n);
     if(n == 0) {
         printf("0\n");
@@ -92,7 +91,8 @@ int main() {
         ans += (tree[1].len > bef)?(tree[1].len - bef):(- tree[1].len + bef);
         bef = tree[1].len;
     }
-
+    bef = 0;
+    /**/
     for (int i = 1; i <= n; i++) {
         // 1 -> 左下角 ; 2 -> 右上角
         add_line(y1[i], x1[i], y2[i], x2[i], i);

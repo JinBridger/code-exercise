@@ -1,21 +1,16 @@
 #include <iostream>
 using namespace std;
 
-int count,value,total;
-
 int main(){
-    cout << "Enter integers (9999 to end):" << endl;
-    while(1) {
-        cin >> value;
-        if(value == 9999)
-            break;
-        total += value;
-        count ++;
+    int counter = 1,number,largest = 0;   
+    counter = 1;
+    while(counter <= 10) {
+        counter ++;
+        cin >> number;
+        if(number > largest) {
+            largest = number;
+        }
     }
-    if(count != 0) {
-        cout << "The average is: " << total / double(count) << endl;
-    } else {
-        cout << "No values were entered." << endl;
-    }
+    cout << largest << endl;
     return 0;
 }
