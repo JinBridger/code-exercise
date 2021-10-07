@@ -6,11 +6,11 @@ using namespace std;
 int main() {
     freopen("D:\\Code_exercise\\Test\\Data\\data.in", "w", stdout);
     srand((int)time(0));
-    for(int i = 1; i <= 4; i++) {
-        for(int j = 1; j <= 4; j++) {
-            printf("%c",(rand() % 2)?'b':'w');
-        }
-        printf("\n");
+    int T = rand() % 10 + 1;
+    for(int i = 1; i <= T; i++) {
+        int n = rand() % 5 + 1;
+        int m = rand() % 10 + 1;
+        
     }
     return 0;
 }

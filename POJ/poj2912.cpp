@@ -32,12 +32,10 @@ void x_equal_y(int x, int y) {
     merge(b(x), b(y));
     merge(c(x), c(y));
 }
-int check() {
-    for (int i = 1; i <= N; i++) {
-        if (get(a(i)) == get(b(i)) || get(b(i)) == get(c(i)) ||
-            get(c(i)) == get(a(i))) {
-            return 0;
-        }
+int check(int p) {
+    if (get(a(p)) == get(b(p)) || get(b(p)) == get(c(p)) ||
+        get(c(p)) == get(a(p))) {
+        return 0;
     }
     return 1;
 }
@@ -56,22 +54,20 @@ void deal(int p) {
                 break;
             case '=':
                 x_equal_y(dat[i].x, dat[i].y);
+                break;
             default:
                 printf("NEVER HERE!");
                 break;
         }
-        if (!check()) {
+        if (!check(dat[i].x) || !check(dat[i].y)) { // 如果有问题，那么这个必不可能为裁判，并且问题出现最晚的一行即为答案
             jud_line = max(jud_line, i);
+            return ;
         }
     }
-    if (check()) {
-        jud_num++;
-        jud = p - 1;
-    }
+    jud_num++;
+    jud = p - 1;
 }
 int main() {
-    freopen("D:\\Code_exercise\\Test\\Data\\data.in", "r", stdin);
-    freopen("D:\\Code_exercise\\Test\\Data\\data.out", "w", stdout);
     while (scanf("%d%d", &N, &M) != EOF) {
         jud_num = 0;
         jud_line = 0;
@@ -89,10 +85,7 @@ int main() {
                 printf("Impossible\n");
                 break;
             case 1:
-                printf(
-                    "Player %d can be determined to be the judge after %d "
-                    "lines\n",
-                    jud, jud_line);
+                printf("Player %d can be determined to be the judge after %d lines\n", jud, jud_line);
                 break;
             default:
                 printf("Can not determine\n");

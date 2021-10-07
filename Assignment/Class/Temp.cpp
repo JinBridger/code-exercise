@@ -1,46 +1,25 @@
-#include <bits/stdc++.h>
+#include <cstdio>
 using namespace std;
 
-int main() {
-    int a, b, c, d, e, f;
-    a = b = c = d = e = f = 0;
-    for (int i = 1; i <= 60000; i++) {
-        int roll = rand() % 6 + 1;
-        switch (roll) {
-            case 1: {
-                a++;
-                break;
-            }
-            case 2: {
-                b++;
-                break;
-            }
-            case 3: {
-                c++;
-                break;
-            }
-            case 4: {
-                d++;
-                break;
-            }
-            case 5: {
-                e++;
-                break;
-            }
-            case 6: {
-                f++;
-                break;
-            }
-            default: {
-                break;
-            }
+const int MODD = 998244353;
+int a, b;
+
+long long fast_pow(int a, int b) { // return a^b % MODD
+    long long ans = 1;
+    long long tem = a;
+    while(b) {
+        if(b & 1) {
+            ans *= tem;
+            ans %= MODD;
         }
+        b >>= 1;
+        tem *= tem;
+        tem %= MODD;
     }
-    cout << a << endl;
-    cout << b << endl;
-    cout << c << endl;
-    cout << d << endl;
-    cout << e << endl;
-    cout << f << endl;
+    return ans;
+}
+int main(){
+    scanf("%d%d", &a, &b);
+    printf("%lld", fast_pow(a, fast_pow(a, b)));
     return 0;
 }
