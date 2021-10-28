@@ -1,25 +1,12 @@
-#include <cstdio>
+#include <bits/stdc++.h>
 using namespace std;
 
-const int MODD = 998244353;
-int a, b;
 
-long long fast_pow(int a, int b) { // return a^b % MODD
-    long long ans = 1;
-    long long tem = a;
-    while(b) {
-        if(b & 1) {
-            ans *= tem;
-            ans %= MODD;
-        }
-        b >>= 1;
-        tem *= tem;
-        tem %= MODD;
-    }
-    return ans;
-}
+
 int main(){
-    scanf("%d%d", &a, &b);
-    printf("%lld", fast_pow(a, fast_pow(a, b)));
+    int b = 10;
+    double x = 2.5, z = 1.4, y = 0;
+    y=(x = z * b++, b = b * x, b++);
+    cout << y << " " << x << " " << b << endl;
     return 0;
 }
