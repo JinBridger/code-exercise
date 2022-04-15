@@ -2,27 +2,27 @@
  * @Author: JinBridge
  * @Date: 2022-03-09 14:47:50
  * @LastEditors: JinBridge
- * @LastEditTime: 2022-03-09 15:34:30
+ * @LastEditTime: 2022-03-09 22:26:43
  * Copyright (c) 2022 by JinBridge, All Rights Reserved.
  */
 #include <iostream>
 #include <string>
 
-class hugeInteger {
+class HugeInteger {
    public:
-    hugeInteger(std::string s) {
+    HugeInteger(std::string s) {
         s.reserve();
         for(int i = 0; i < s.length(); ++i)
             integer[i] = s[i] - '0';
     }
-    hugeInteger(int n = 0) {
+    HugeInteger(int n = 0) {
         for(int i = 0; n > 0; ++i) {
             integer[i] = (n % 10);
             n /= 10;
         }
     }
 
-    hugeInteger add(const hugeInteger &n) {
+    HugeInteger add(const HugeInteger &n) {
         for(int i = 0; i < 40; ++i) {
             integer[i] += n.integer[i];
             if(integer[i] >= 10) {
@@ -32,14 +32,14 @@ class hugeInteger {
         }
         return *this;
     }
-    hugeInteger add(int m) {
-        return add(hugeInteger(std::to_string(m)));
+    HugeInteger add(int m) {
+        return add(HugeInteger(std::to_string(m)));
     }
-    hugeInteger add(std::string s) {
-        return add(hugeInteger(s));
+    HugeInteger add(std::string s) {
+        return add(HugeInteger(s));
     }
 
-    hugeInteger subtract(const hugeInteger &n) {
+    HugeInteger subtract(const HugeInteger &n) {
         for(int i = 0; i < 40; ++i) {
             integer[i] -= n.integer[i];
         }
@@ -51,36 +51,36 @@ class hugeInteger {
         }
         return *this;
     }
-    hugeInteger subtract(int m) {
-        return subtract(hugeInteger(std::to_string(m)));
+    HugeInteger subtract(int m) {
+        return subtract(HugeInteger(std::to_string(m)));
     }
-    hugeInteger subtract(std::string s) {
-        return subtract(hugeInteger(s));
+    HugeInteger subtract(std::string s) {
+        return subtract(HugeInteger(s));
     }
     
-    bool isEqualTo(const hugeInteger &n) {
+    bool isEqualTo(const HugeInteger &n) {
         for(int i = 0; i < 40; ++i)
             if(integer[i] != n.integer[i])
                 return false;
         return true;
     }
-    bool isNotEqualTo(const hugeInteger &n) {
+    bool isNotEqualTo(const HugeInteger &n) {
         return !isEqualTo(n);
     }
-    bool isGreaterThan(const hugeInteger &n) {
+    bool isGreaterThan(const HugeInteger &n) {
         for(int i = 39; i >= 0; --i)
             if(integer[i] != n.integer[i])
                 return integer[i] > n.integer[i];
         return false;
     }
-    bool isLessThan(const hugeInteger &n) {
+    bool isLessThan(const HugeInteger &n) {
         if(isEqualTo(n)) return false;
         return !isGreaterThan(n);
     }
-    bool isGreaterThanOrEqualTo(const hugeInteger &n) {
+    bool isGreaterThanOrEqualTo(const HugeInteger &n) {
         return (isGreaterThan(n) || isEqualTo(n));
     }
-    bool isLessThanOrEqualTo(const hugeInteger &n) {
+    bool isLessThanOrEqualTo(const HugeInteger &n) {
         return (isLessThan(n) || isEqualTo(n));
     }
     bool isZero() {
@@ -107,29 +107,29 @@ class hugeInteger {
 };
 int main() {
     std::cout << "7654321 + 7891234 = ";
-    hugeInteger(7654321).add(7891234).output();
+    HugeInteger(7654321).add(7891234).output();
     std::cout << std::endl;
 
     std::cout << "7891234 - 5 = ";
-    hugeInteger(7891234).subtract(5).output();
+    HugeInteger(7891234).subtract(5).output();
     std::cout << std::endl;
 
-    if(hugeInteger(7654321).isEqualTo(hugeInteger(7654321)))
+    if(HugeInteger(7654321).isEqualTo(HugeInteger(7654321)))
         std::cout << "7654321 is equal to 7654321" << std::endl;
 
-    if(hugeInteger(7654321).isNotEqualTo(hugeInteger(7891234)))
+    if(HugeInteger(7654321).isNotEqualTo(HugeInteger(7891234)))
         std::cout << "7654321 is not equal to 7891234" << std::endl;
 
-    if(hugeInteger(7891234).isGreaterThan(hugeInteger(7654321)))
+    if(HugeInteger(7891234).isGreaterThan(HugeInteger(7654321)))
         std::cout << "7891234 is greater than 7654321" << std::endl;
     
-    if(hugeInteger(5).isLessThan(hugeInteger(7891234)))
+    if(HugeInteger(5).isLessThan(HugeInteger(7891234)))
         std::cout << "5 is less than 7891234" << std::endl;
     
-    if(hugeInteger(5).isLessThanOrEqualTo(hugeInteger(5)))
+    if(HugeInteger(5).isLessThanOrEqualTo(HugeInteger(5)))
         std::cout << "5 is less than or equal to 5" << std::endl;
 
-    if(hugeInteger(0).isGreaterThanOrEqualTo(hugeInteger(0))) 
+    if(HugeInteger(0).isGreaterThanOrEqualTo(HugeInteger(0))) 
         std::cout << "0 is greater than or equal to 0" << std::endl;
     return 0;
 }
